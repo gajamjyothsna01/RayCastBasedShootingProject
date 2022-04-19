@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float playerSpeed;
+   /* public float playerSpeed;
     public float playerJumpForce;
-     Rigidbody rb;
+     Rigidbody rb;*/
     public Transform bulletLaunchPosition;
     //bool isGrounded = false;
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+       // rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
         
-            float inputX = Input.GetAxis("Horizontal");
+           /* float inputX = Input.GetAxis("Horizontal");
             float inputY = Input.GetAxis("Vertical");
             transform.Translate(Vector3.forward* inputY* playerSpeed* Time.deltaTime);
             transform.Translate(Vector3.right * inputX * playerSpeed * Time.deltaTime);
@@ -27,9 +27,9 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.S))
         {
             rb.AddForce(Vector3.up * playerJumpForce, ForceMode.Impulse);
-        }
+        }*/
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.F))
         {
             ShootTheEnemy();
         }
@@ -50,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
             GameObject hitEnenimes = hitInfo.collider.gameObject;
             if (hitEnenimes.tag == "Enemy")
             {
-
+                Debug.Log("Player to Hit Enemy");
                 hitEnenimes.GetComponent<EnemyController>().DeadEnemy();
 
             }
