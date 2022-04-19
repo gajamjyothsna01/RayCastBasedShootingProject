@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public float playerSpeed;
     public float playerJumpForce;
      Rigidbody rb;
+    public Transform bulletLaunchPosition;
     //bool isGrounded = false;
     // Start is called before the first frame update
     void Start()
@@ -23,11 +24,15 @@ public class PlayerMovement : MonoBehaviour
             transform.Translate(Vector3.forward* inputY* playerSpeed* Time.deltaTime);
             transform.Translate(Vector3.right * inputX * playerSpeed * Time.deltaTime);
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.S))
         {
             rb.AddForce(Vector3.up * playerJumpForce, ForceMode.Impulse);
         }
 
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            ShootTheEnemy();
+        }
         
 
         //rb.MovePosition(new Vector3(inputX * playerSpeed, inputY * playerSpeed, 0));
@@ -35,5 +40,20 @@ public class PlayerMovement : MonoBehaviour
 
 
 
+    }
+    private void ShootTheEnemy()
+    {
+        RaycastHit hitInfo;
+        if (Physics.Raycast(bulletLaunchPosition.position, bulletLaunchPosition.forward, out hitInfo , 100f))
+        {
+
+            GameObject hitEnenimes = hitInfo.collider.gameObject;
+            if (hitEnenimes.tag == "Enemy")
+            {
+
+                hitEnenimes.GetComponent<EnemyController>().DeadEnemy();
+
+            }
+        }
     }
 }
