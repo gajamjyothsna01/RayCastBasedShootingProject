@@ -19,6 +19,7 @@ public class EnemyController : MonoBehaviour
     {
         Debug.Log("Enemy Dead");
         Destroy(gameObject);
+        //GameObject.Find("ScoreManager").GetComponent<ScoreManager>().Score(10);
        
     }
 }

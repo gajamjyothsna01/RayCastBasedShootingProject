@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(Vector3.up * playerJumpForce, ForceMode.Impulse);
         }*/
 
-        if(Input.GetKeyDown(KeyCode.F))
+        if(Input.GetMouseButton(0))
         {
             ShootTheEnemy();
         }
